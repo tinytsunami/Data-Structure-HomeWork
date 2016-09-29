@@ -1,9 +1,16 @@
 #pragma once
+# include <ctime>
 #include "Algorithms.h"
 int upBound, underBound;
 int count;
-int originData[10000];
-int* sortData;
+int originData[110000];
+int tmpData[110000];
+int *sortData;
+int stepNum = 1;
+int addNum = 0;
+bool showData = true;
+bool checkSorted = false;
+bool drawChart = true;
 
 namespace CppWinForm1 {
 
@@ -104,15 +111,25 @@ namespace CppWinForm1 {
 	private: System::Windows::Forms::Button^  button3;
 
 	private: System::Windows::Forms::Button^  button5;
-    private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
-    private: System::Windows::Forms::Button^  button6;
+
+
     private: System::Windows::Forms::Button^  button4;
-    private: System::Windows::Forms::CheckBox^  checkBox2;
+
     private: System::Windows::Forms::CheckBox^  checkBox1;
-    private: System::Windows::Forms::Label^  label23;
-    private: System::Windows::Forms::NumericUpDown^  timeLimit;
-    private: System::Windows::Forms::CheckBox^  timeLimitCheck;
-    private: System::Windows::Forms::CheckBox^  ProgressiveCheck;
+
+
+
+    private: System::Windows::Forms::CheckBox^  checkSortedBox;
+
+
+    private: System::Windows::Forms::CheckBox^  checkBox3;
+    private: System::Windows::Forms::Button^  button6;
+    private: System::Windows::Forms::NumericUpDown^  stepBox;
+    private: System::Windows::Forms::NumericUpDown^  addBox;
+
+
+    private: System::Windows::Forms::Label^  label26;
+    private: System::Windows::Forms::Label^  label28;
 
 
 	protected:
@@ -136,6 +153,11 @@ namespace CppWinForm1 {
             this->button_sort = (gcnew System::Windows::Forms::Button());
             this->tabControl = (gcnew System::Windows::Forms::TabControl());
             this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+            this->checkBox3 = (gcnew System::Windows::Forms::CheckBox());
+            this->button6 = (gcnew System::Windows::Forms::Button());
+            this->button4 = (gcnew System::Windows::Forms::Button());
+            this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
+            this->checkSortedBox = (gcnew System::Windows::Forms::CheckBox());
             this->label1 = (gcnew System::Windows::Forms::Label());
             this->algorithmBox = (gcnew System::Windows::Forms::CheckedListBox());
             this->console = (gcnew System::Windows::Forms::TextBox());
@@ -164,6 +186,10 @@ namespace CppWinForm1 {
             this->label9 = (gcnew System::Windows::Forms::Label());
             this->label7 = (gcnew System::Windows::Forms::Label());
             this->label8 = (gcnew System::Windows::Forms::Label());
+            this->stepBox = (gcnew System::Windows::Forms::NumericUpDown());
+            this->addBox = (gcnew System::Windows::Forms::NumericUpDown());
+            this->label26 = (gcnew System::Windows::Forms::Label());
+            this->label28 = (gcnew System::Windows::Forms::Label());
             this->button_getData = (gcnew System::Windows::Forms::Button());
             this->label_count = (gcnew System::Windows::Forms::Label());
             this->chart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
@@ -177,32 +203,23 @@ namespace CppWinForm1 {
             this->button2 = (gcnew System::Windows::Forms::Button());
             this->button3 = (gcnew System::Windows::Forms::Button());
             this->button5 = (gcnew System::Windows::Forms::Button());
-            this->ProgressiveCheck = (gcnew System::Windows::Forms::CheckBox());
-            this->timeLimitCheck = (gcnew System::Windows::Forms::CheckBox());
-            this->timeLimit = (gcnew System::Windows::Forms::NumericUpDown());
-            this->label23 = (gcnew System::Windows::Forms::Label());
-            this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
-            this->checkBox2 = (gcnew System::Windows::Forms::CheckBox());
-            this->button4 = (gcnew System::Windows::Forms::Button());
-            this->button6 = (gcnew System::Windows::Forms::Button());
-            this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
             this->tabControl->SuspendLayout();
             this->tabPage1->SuspendLayout();
             this->tabPage_originData->SuspendLayout();
             this->tabPage2->SuspendLayout();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->stepBox))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->addBox))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_upBound))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_count))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_underBound))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->timeLimit))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
             this->SuspendLayout();
             // 
             // button_sort
             // 
-            this->button_sort->Location = System::Drawing::Point(196, 212);
+            this->button_sort->Location = System::Drawing::Point(182, 212);
             this->button_sort->Name = L"button_sort";
-            this->button_sort->Size = System::Drawing::Size(163, 23);
+            this->button_sort->Size = System::Drawing::Size(177, 23);
             this->button_sort->TabIndex = 0;
             this->button_sort->Text = L"Sort";
             this->button_sort->Click += gcnew System::EventHandler(this, &MyForm::button_sort_Click);
@@ -220,15 +237,11 @@ namespace CppWinForm1 {
             // 
             // tabPage1
             // 
-            this->tabPage1->Controls->Add(this->numericUpDown1);
+            this->tabPage1->Controls->Add(this->checkBox3);
             this->tabPage1->Controls->Add(this->button6);
             this->tabPage1->Controls->Add(this->button4);
-            this->tabPage1->Controls->Add(this->checkBox2);
             this->tabPage1->Controls->Add(this->checkBox1);
-            this->tabPage1->Controls->Add(this->label23);
-            this->tabPage1->Controls->Add(this->timeLimit);
-            this->tabPage1->Controls->Add(this->timeLimitCheck);
-            this->tabPage1->Controls->Add(this->ProgressiveCheck);
+            this->tabPage1->Controls->Add(this->checkSortedBox);
             this->tabPage1->Controls->Add(this->label1);
             this->tabPage1->Controls->Add(this->algorithmBox);
             this->tabPage1->Controls->Add(this->console);
@@ -241,11 +254,67 @@ namespace CppWinForm1 {
             this->tabPage1->Text = L"Console";
             this->tabPage1->UseVisualStyleBackColor = true;
             // 
+            // checkBox3
+            // 
+            this->checkBox3->AutoSize = true;
+            this->checkBox3->Checked = true;
+            this->checkBox3->CheckState = System::Windows::Forms::CheckState::Checked;
+            this->checkBox3->Location = System::Drawing::Point(185, 146);
+            this->checkBox3->Name = L"checkBox3";
+            this->checkBox3->Size = System::Drawing::Size(78, 16);
+            this->checkBox3->TabIndex = 34;
+            this->checkBox3->Text = L"Draw Chart";
+            this->checkBox3->UseVisualStyleBackColor = true;
+            this->checkBox3->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox3_CheckedChanged);
+            // 
+            // button6
+            // 
+            this->button6->Location = System::Drawing::Point(93, 212);
+            this->button6->Name = L"button6";
+            this->button6->Size = System::Drawing::Size(86, 23);
+            this->button6->TabIndex = 33;
+            this->button6->Text = L"Save";
+            // 
+            // button4
+            // 
+            this->button4->Location = System::Drawing::Point(6, 212);
+            this->button4->Name = L"button4";
+            this->button4->Size = System::Drawing::Size(86, 23);
+            this->button4->TabIndex = 24;
+            this->button4->Text = L"Clear";
+            this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+            // 
+            // checkBox1
+            // 
+            this->checkBox1->AutoSize = true;
+            this->checkBox1->Checked = true;
+            this->checkBox1->CheckState = System::Windows::Forms::CheckState::Checked;
+            this->checkBox1->Location = System::Drawing::Point(185, 168);
+            this->checkBox1->Name = L"checkBox1";
+            this->checkBox1->Size = System::Drawing::Size(107, 16);
+            this->checkBox1->TabIndex = 22;
+            this->checkBox1->Text = L"Dont show output";
+            this->checkBox1->UseVisualStyleBackColor = true;
+            this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
+            // 
+            // checkSortedBox
+            // 
+            this->checkSortedBox->AutoSize = true;
+            this->checkSortedBox->Checked = true;
+            this->checkSortedBox->CheckState = System::Windows::Forms::CheckState::Checked;
+            this->checkSortedBox->Location = System::Drawing::Point(185, 190);
+            this->checkSortedBox->Name = L"checkSortedBox";
+            this->checkSortedBox->Size = System::Drawing::Size(87, 16);
+            this->checkSortedBox->TabIndex = 18;
+            this->checkSortedBox->Text = L"Check Sorted";
+            this->checkSortedBox->UseVisualStyleBackColor = true;
+            this->checkSortedBox->CheckedChanged += gcnew System::EventHandler(this, &MyForm::ProgressiveCheck_CheckedChanged);
+            // 
             // label1
             // 
             this->label1->AutoSize = true;
             this->label1->Font = (gcnew System::Drawing::Font(L"微軟正黑體", 10));
-            this->label1->Location = System::Drawing::Point(196, 6);
+            this->label1->Location = System::Drawing::Point(182, 6);
             this->label1->Name = L"label1";
             this->label1->Size = System::Drawing::Size(82, 18);
             this->label1->TabIndex = 18;
@@ -256,18 +325,16 @@ namespace CppWinForm1 {
             this->algorithmBox->CheckOnClick = true;
             this->algorithmBox->FormattingEnabled = true;
             this->algorithmBox->ImeMode = System::Windows::Forms::ImeMode::Off;
-            this->algorithmBox->Items->AddRange(gcnew cli::array< System::Object^  >(20)
+            this->algorithmBox->Items->AddRange(gcnew cli::array< System::Object^  >(17)
             {
                 L"Bubble sort", L"Selection sort", L"Insertion sort",
-                    L"Cocktail sort", L"Bucket sort", L"Counting sort", L"Merge sort", L"Binary Tree sort", L"Pigeonhole sort", L"Radix sort", L"Gnome sort",
-                    L"Library sort", L"Block sort", L"Quick sort", L"Bead sort", L"Simple Pancake sort", L"Spaghetti sort", L"Stooge sort", L"Sleep sort",
-                    L"Bogo sort"
+                    L"Cocktail sort", L"Bucket sort", L"Counting sort", L"Merge sort", L"Binary search tree", L"Comb sort", L"Radix sort", L"Gnome sort",
+                    L"Odd-even sort", L"Block sort", L"Quick sort", L"Heap sort", L"Stooge sort", L"Bogo sort"
             });
-            this->algorithmBox->Location = System::Drawing::Point(196, 27);
+            this->algorithmBox->Location = System::Drawing::Point(182, 27);
             this->algorithmBox->Name = L"algorithmBox";
-            this->algorithmBox->Size = System::Drawing::Size(163, 106);
+            this->algorithmBox->Size = System::Drawing::Size(177, 106);
             this->algorithmBox->TabIndex = 20;
-            this->algorithmBox->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::algorithmBox_SelectedIndexChanged);
             // 
             // console
             // 
@@ -276,7 +343,7 @@ namespace CppWinForm1 {
             this->console->Name = L"console";
             this->console->ReadOnly = true;
             this->console->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-            this->console->Size = System::Drawing::Size(184, 127);
+            this->console->Size = System::Drawing::Size(170, 200);
             this->console->TabIndex = 19;
             // 
             // tabPage_originData
@@ -569,11 +636,50 @@ namespace CppWinForm1 {
             this->label8->TabIndex = 1;
             this->label8->Text = L"Author.";
             // 
+            // stepBox
+            // 
+            this->stepBox->Location = System::Drawing::Point(254, 104);
+            this->stepBox->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+            this->stepBox->Name = L"stepBox";
+            this->stepBox->Size = System::Drawing::Size(50, 22);
+            this->stepBox->TabIndex = 32;
+            this->stepBox->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
+            // 
+            // addBox
+            // 
+            this->addBox->Location = System::Drawing::Point(177, 104);
+            this->addBox->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1000, 0, 0, 0 });
+            this->addBox->Name = L"addBox";
+            this->addBox->Size = System::Drawing::Size(51, 22);
+            this->addBox->TabIndex = 31;
+            this->addBox->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 200, 0, 0, 0 });
+            // 
+            // label26
+            // 
+            this->label26->AutoSize = true;
+            this->label26->Font = (gcnew System::Drawing::Font(L"微軟正黑體", 9));
+            this->label26->Location = System::Drawing::Point(234, 107);
+            this->label26->Name = L"label26";
+            this->label26->Size = System::Drawing::Size(14, 16);
+            this->label26->TabIndex = 30;
+            this->label26->Text = L"x";
+            // 
+            // label28
+            // 
+            this->label28->AutoSize = true;
+            this->label28->Font = (gcnew System::Drawing::Font(L"微軟正黑體", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                                                               static_cast<System::Byte>(136)));
+            this->label28->Location = System::Drawing::Point(154, 107);
+            this->label28->Name = L"label28";
+            this->label28->Size = System::Drawing::Size(17, 16);
+            this->label28->TabIndex = 29;
+            this->label28->Text = L"+";
+            // 
             // button_getData
             // 
-            this->button_getData->Location = System::Drawing::Point(234, 104);
+            this->button_getData->Location = System::Drawing::Point(310, 104);
             this->button_getData->Name = L"button_getData";
-            this->button_getData->Size = System::Drawing::Size(146, 22);
+            this->button_getData->Size = System::Drawing::Size(70, 22);
             this->button_getData->TabIndex = 3;
             this->button_getData->Text = L"Generate";
             this->button_getData->UseVisualStyleBackColor = true;
@@ -586,12 +692,14 @@ namespace CppWinForm1 {
                                                                    static_cast<System::Byte>(136)));
             this->label_count->Location = System::Drawing::Point(20, 106);
             this->label_count->Name = L"label_count";
-            this->label_count->Size = System::Drawing::Size(96, 20);
+            this->label_count->Size = System::Drawing::Size(56, 20);
             this->label_count->TabIndex = 5;
-            this->label_count->Text = L"Data Count";
+            this->label_count->Text = L"Count";
             // 
             // chart
             // 
+            chartArea1->AxisX->Title = L"Count of Data";
+            chartArea1->AxisY->Title = L"Time";
             chartArea1->Name = L"ChartArea1";
             this->chart->ChartAreas->Add(chartArea1);
             legend1->Name = L"Legend1";
@@ -649,17 +757,17 @@ namespace CppWinForm1 {
             this->numericUpDown_upBound->Name = L"numericUpDown_upBound";
             this->numericUpDown_upBound->Size = System::Drawing::Size(92, 22);
             this->numericUpDown_upBound->TabIndex = 15;
-            this->numericUpDown_upBound->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100, 0, 0, 0 });
+            this->numericUpDown_upBound->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20000, 0, 0, 0 });
             this->numericUpDown_upBound->ValueChanged += gcnew System::EventHandler(this, &MyForm::numericUpDown_upBound_ValueChanged);
             // 
             // numericUpDown_count
             // 
-            this->numericUpDown_count->Location = System::Drawing::Point(136, 104);
+            this->numericUpDown_count->Location = System::Drawing::Point(82, 104);
             this->numericUpDown_count->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10000, 0, 0, 0 });
             this->numericUpDown_count->Name = L"numericUpDown_count";
-            this->numericUpDown_count->Size = System::Drawing::Size(92, 22);
+            this->numericUpDown_count->Size = System::Drawing::Size(66, 22);
             this->numericUpDown_count->TabIndex = 16;
-            this->numericUpDown_count->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
+            this->numericUpDown_count->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2000, 0, 0, 0 });
             // 
             // numericUpDown_underBound
             // 
@@ -710,90 +818,6 @@ namespace CppWinForm1 {
             this->button5->UseVisualStyleBackColor = true;
             this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
             // 
-            // ProgressiveCheck
-            // 
-            this->ProgressiveCheck->AutoSize = true;
-            this->ProgressiveCheck->Location = System::Drawing::Point(199, 190);
-            this->ProgressiveCheck->Name = L"ProgressiveCheck";
-            this->ProgressiveCheck->Size = System::Drawing::Size(87, 16);
-            this->ProgressiveCheck->TabIndex = 18;
-            this->ProgressiveCheck->Text = L"Check Sorted";
-            this->ProgressiveCheck->UseVisualStyleBackColor = true;
-            // 
-            // timeLimitCheck
-            // 
-            this->timeLimitCheck->AutoSize = true;
-            this->timeLimitCheck->Location = System::Drawing::Point(199, 146);
-            this->timeLimitCheck->Name = L"timeLimitCheck";
-            this->timeLimitCheck->Size = System::Drawing::Size(72, 16);
-            this->timeLimitCheck->TabIndex = 21;
-            this->timeLimitCheck->Text = L"Time limit";
-            this->timeLimitCheck->UseVisualStyleBackColor = true;
-            // 
-            // timeLimit
-            // 
-            this->timeLimit->Location = System::Drawing::Point(277, 140);
-            this->timeLimit->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 36000, 0, 0, 0 });
-            this->timeLimit->Name = L"timeLimit";
-            this->timeLimit->Size = System::Drawing::Size(64, 22);
-            this->timeLimit->TabIndex = 20;
-            this->timeLimit->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
-            // 
-            // label23
-            // 
-            this->label23->AutoSize = true;
-            this->label23->Font = (gcnew System::Drawing::Font(L"微軟正黑體", 8));
-            this->label23->Location = System::Drawing::Point(347, 147);
-            this->label23->Name = L"label23";
-            this->label23->Size = System::Drawing::Size(12, 15);
-            this->label23->TabIndex = 20;
-            this->label23->Text = L"s";
-            // 
-            // checkBox1
-            // 
-            this->checkBox1->AutoSize = true;
-            this->checkBox1->Location = System::Drawing::Point(199, 168);
-            this->checkBox1->Name = L"checkBox1";
-            this->checkBox1->Size = System::Drawing::Size(132, 16);
-            this->checkBox1->TabIndex = 22;
-            this->checkBox1->Text = L"No output (sorted data)";
-            this->checkBox1->UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this->checkBox2->AutoSize = true;
-            this->checkBox2->Location = System::Drawing::Point(6, 168);
-            this->checkBox2->Name = L"checkBox2";
-            this->checkBox2->Size = System::Drawing::Size(106, 16);
-            this->checkBox2->TabIndex = 23;
-            this->checkBox2->Text = L"Progressive count";
-            this->checkBox2->UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this->button4->Location = System::Drawing::Point(6, 139);
-            this->button4->Name = L"button4";
-            this->button4->Size = System::Drawing::Size(90, 23);
-            this->button4->TabIndex = 24;
-            this->button4->Text = L"Clear";
-            // 
-            // button6
-            // 
-            this->button6->Location = System::Drawing::Point(100, 139);
-            this->button6->Name = L"button6";
-            this->button6->Size = System::Drawing::Size(90, 23);
-            this->button6->TabIndex = 25;
-            this->button6->Text = L"Save";
-            // 
-            // numericUpDown1
-            // 
-            this->numericUpDown1->Location = System::Drawing::Point(25, 190);
-            this->numericUpDown1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 65536, 0, 0, 0 });
-            this->numericUpDown1->Name = L"numericUpDown1";
-            this->numericUpDown1->Size = System::Drawing::Size(92, 22);
-            this->numericUpDown1->TabIndex = 23;
-            this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100, 0, 0, 0 });
-            // 
             // MyForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
@@ -801,9 +825,13 @@ namespace CppWinForm1 {
             this->ClientSize = System::Drawing::Size(944, 416);
             this->Controls->Add(this->button5);
             this->Controls->Add(this->button3);
+            this->Controls->Add(this->stepBox);
             this->Controls->Add(this->button2);
+            this->Controls->Add(this->addBox);
             this->Controls->Add(this->button1);
+            this->Controls->Add(this->label26);
             this->Controls->Add(this->numericUpDown_underBound);
+            this->Controls->Add(this->label28);
             this->Controls->Add(this->numericUpDown_count);
             this->Controls->Add(this->numericUpDown_upBound);
             this->Controls->Add(this->label4);
@@ -825,12 +853,12 @@ namespace CppWinForm1 {
             this->tabPage_originData->PerformLayout();
             this->tabPage2->ResumeLayout(false);
             this->tabPage2->PerformLayout();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->stepBox))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->addBox))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_upBound))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_count))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown_underBound))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->timeLimit))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
             this->ResumeLayout(false);
             this->PerformLayout();
 
@@ -846,34 +874,35 @@ namespace CppWinForm1 {
 				console->AppendText("Clear Origin Data...\r\n\r\n");
 				originData_textBox->Text = "";
 			}
-
 			void generateConsoleMessage(System::String^ type)
 			{
 				console->AppendText("[Data Generate]\r\n");
 				console->AppendText("Type: " + type + "\r\n");
-				console->AppendText("Count: " + numericUpDown_count->Value + "\r\n");
-				console->AppendText("Range: {x | x < " + numericUpDown_count->Value + ", x > " + numericUpDown_underBound->Value + "}\r\n\r\n");
+				console->AppendText("Count: " + System::Convert::ToString(count + addNum * stepNum) + "\r\n");
+				console->AppendText("Range: {x | x < " + numericUpDown_upBound->Value + ", x > " + numericUpDown_underBound->Value + "}\r\n\r\n");
 			}
-
 			void showGenerateData()
 			{
-				for (int i = 0; i < count; i++)
-				{
-					originData_textBox->AppendText(System::Convert::ToString(originData[i]));
-					if (i != count - 1)
-						originData_textBox->AppendText(", ");
-				}
-
-				console->AppendText("Finished.\r\n\r\n");
+                originData_textBox->Clear();
+                if (showData == true)
+                {
+                    int size = (count + addNum*stepNum);
+                    for (int i = 0; i < size; i++)
+                    {
+                        originData_textBox->AppendText(System::Convert::ToString(originData[i]));
+                        if (i != size - 1)
+                            originData_textBox->AppendText(", ");
+                    }
+                }
+                console->AppendText("Finished.\r\n\r\n");
 			}
-
 			void generateData()
 			{
 				Random rand;
-				for (int i = 0; i < count; i++)
+                int size = (count + addNum*stepNum);
+				for (int i = 0; i < size; i++)
 					originData[i] = (rand.Next() % (upBound - underBound)) + underBound;
 			}
-
 			//generate normal data
 			System::Void button3_Click(System::Object^  sender, System::EventArgs^  e)
 			{
@@ -881,12 +910,13 @@ namespace CppWinForm1 {
 				upBound = System::Convert::ToInt32(numericUpDown_upBound->Value);
 				underBound = System::Convert::ToInt32(numericUpDown_underBound->Value);
 				count = System::Convert::ToInt32(numericUpDown_count->Value);
+                addNum = System::Convert::ToInt32(addBox->Value);
+                stepNum = System::Convert::ToInt32(stepBox->Value);
 
 				this->generateConsoleMessage("Normal");
 				this->generateData();
 				this->showGenerateData();
 			}
-			
 			//generate random data
 			System::Void button1_Click(System::Object^  sender, System::EventArgs^  e)
 			{
@@ -895,16 +925,19 @@ namespace CppWinForm1 {
 				underBound = rand.Next() % 35537;
 				upBound = underBound + (rand.Next() % (35537 - underBound));
 				count = rand.Next() % 10000;
+                addNum = rand.Next() % 1000;
+                stepNum = rand.Next() % 100;
 
 				numericUpDown_upBound->Value = upBound;
 				numericUpDown_underBound->Value = underBound;
 				numericUpDown_count->Value = count;
+                stepBox->Value = stepNum;
+                addBox->Value = addNum;
 
 				this->generateConsoleMessage("Random");
 				this->generateData();
 				this->showGenerateData();
 			}
-		
 			//generate maximum data
 			System::Void button2_Click(System::Object^  sender, System::EventArgs^  e)
 			{
@@ -912,16 +945,19 @@ namespace CppWinForm1 {
 				upBound = 65536;
 				underBound = 0;
 				count = 10000;
+                addNum = 1000;
+                stepNum = 100;
 
 				numericUpDown_upBound->Value = upBound;
 				numericUpDown_underBound->Value = underBound;
 				numericUpDown_count->Value = count;
+                stepBox->Value = stepNum;
+                addBox->Value = addNum;
 
 				this->generateConsoleMessage("Maximum");
 				this->generateData();
 				this->showGenerateData();
 			}
-
 			//generate best data
 			System::Void button3_Click_1(System::Object^  sender, System::EventArgs^  e)
 			{
@@ -929,17 +965,18 @@ namespace CppWinForm1 {
 				upBound = System::Convert::ToInt32(numericUpDown_upBound->Value);
 				underBound = System::Convert::ToInt32(numericUpDown_underBound->Value);
 				count = System::Convert::ToInt32(numericUpDown_count->Value);
+                addNum = System::Convert::ToInt32(addBox->Value);
+                stepNum = System::Convert::ToInt32(stepBox->Value);
 
 				this->generateConsoleMessage("Best");
 
 				//process
 				this->generateData();
-				sort(BUBBLE_SORT, originData, count);
+				sort(INSERTION_SORT, originData, (count + addNum*stepNum));
 				sortData = nullptr;
 
 				this->showGenerateData();
 			}
-
 			//generate worth data
 			System::Void button5_Click(System::Object^  sender, System::EventArgs^  e)
 			{
@@ -947,12 +984,14 @@ namespace CppWinForm1 {
 				upBound = System::Convert::ToInt32(numericUpDown_upBound->Value);
 				underBound = System::Convert::ToInt32(numericUpDown_underBound->Value);
 				count = System::Convert::ToInt32(numericUpDown_count->Value);
+                addNum = System::Convert::ToInt32(addBox->Value);
+                stepNum = System::Convert::ToInt32(stepBox->Value);
 
 				this->generateConsoleMessage("Worth");
 
 				//process
 				this->generateData();
-				sort(BUBBLE_SORT, originData, count);
+				sort(INSERTION_SORT, originData, (count + addNum*stepNum));
 				for (int i = 0; i < count / 2; i++)
 				{
 					int &a = originData[i];
@@ -972,68 +1011,112 @@ namespace CppWinForm1 {
 				if (numericUpDown_upBound->Value < numericUpDown_underBound->Value)
 					numericUpDown_upBound->Value = System::Convert::ToInt32(numericUpDown_underBound->Value) + 1;
 			}
-	
 			//Let up-bound > under-bound (value reduce)
 			System::Void numericUpDown_upBound_ValueChanged(System::Object^  sender, System::EventArgs^  e)
 			{
 				if (numericUpDown_upBound->Value < numericUpDown_underBound->Value)
 					numericUpDown_underBound->Value = System::Convert::ToInt32(numericUpDown_upBound->Value) - 1;
-			}
-
-			//Show the series at chart
-			System::Void algorithmBox_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e)
-			{
-				CheckedListBox^ checkBox = (CheckedListBox^) sender;
-				int index = chart->Series->IndexOf(checkBox->Text);
-
-				if (index >= 0)
-				{
-					chart->Series->RemoveAt(index);
-					console->AppendText("Remove " + checkBox->Text + "\r\n\r\n");
-				}
-				else
-				{
-					chart->Series->Add(checkBox->Text);
-					console->AppendText("Add " + checkBox->Text + "\r\n\r\n");
-				}
-			}
-		
-			//To my github
+			}	
 			System::Void linkLabel1_LinkClicked(System::Object^  sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^  e)
 			{
 				System::Diagnostics::Process::Start("https://github.com/tinytsunami");
 			}
-
+            System::Void button4_Click(System::Object^  sender, System::EventArgs^  e)
+            {
+                console->Clear();
+            }
+            System::Void checkBox1_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
+            {
+                showData = !checkBox1->Checked;
+            }
+            System::Void ProgressiveCheck_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
+            {
+                checkSorted = checkSortedBox->Checked;
+            }
+            System::Void checkBox3_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
+            {
+                drawChart = checkBox3->Checked;
+            }
 		////////////////////////////////////////////////////////////
 		/* Sort Main											  */
 		////////////////////////////////////////////////////////////
 			System::Void button_sort_Click(System::Object^  sender, System::EventArgs^  e)
 			{
-				//read Algorithoms to get about "type"
-				for (int type = 0; type < 20; type++)
-					if (algorithmBox->GetItemChecked(type))
-					{
-						console->AppendText(algorithmBox->CheckedItems[type]->ToString() + " start...\r\n\r\n");
-						sortData = sort(type, originData, count);
-						console->AppendText(algorithmBox->CheckedItems[type]->ToString() + " finish.\r\n\r\n");
-					}
+                //clear screen
+                this->chart->Series->Clear();
 
-				//show sorted data
+				//Algorithoms
+                for (int type = 0; type < ALGORITHMS_COUNT; type++)
+                    if (algorithmBox->GetItemChecked(type))
+                    {
+                        //get sort name
+                        String^ name = algorithmBox->Items[type]->ToString();
+                        //add chart series
+                        if (drawChart)
+                            chart->Series->Add(name);
+                        //every step
+                        for (int step = 1; step <= stepNum; step++)
+                        {
+                            //get need count
+                            int dataCount = count + addNum * step;
+                            //copy a data to sorted
+                            for (int i = 0; i < dataCount; i++)
+                                tmpData[i] = originData[i];
+                            //show console and sort
+                            console->AppendText(name + " start(count:" + System::Convert::ToString(dataCount) + ")\r\n");
+
+                            clock_t start = clock();
+                            sortData = sort(type, tmpData, dataCount);
+                            float time = (float)(clock() - start) / CLK_TCK;
+
+                            console->AppendText(name + " finish (" + time + "sec).\r\n\r\n");
+                            //draw
+                            if (drawChart == true)
+                            {
+                                this->chart->Series[name]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+                                this->chart->Series[name]->Points->AddXY(dataCount, time + 0.0001f);
+                            }
+                        }
+                    }
+                //get all count of data
+                int dataCount = count + addNum * stepNum;
+                //have any sorted box is checked.
 				if (sortData != nullptr)
 				{
-					sortData_textBox->Text = "";
-					for (int i = 0; i < count; i++)
-					{
-						sortData_textBox->AppendText(System::Convert::ToString(sortData[i]));
-						if (i != count - 1)
-							sortData_textBox->AppendText(", ");
-					}
-					console->AppendText("Show sorted data.\r\n\r\n");
+                    //check
+                    if (checkSorted == true)
+                    {
+                        int index;
+                        for (index = 1; index < dataCount; index++)
+                        {
+                            if (sortData[index] < sortData[index - 1])
+                            {
+                                console->AppendText("Check Failed, Sorted Error!\r\n\r\n");
+                                break;
+                            }
+                        }
+                        if (index == dataCount)
+                        {
+                            console->AppendText("Check success.\r\n\r\n");
+                        }
+                    }
+                    //show
+                    if (showData == true)
+                    {
+                        sortData_textBox->Text = "";
+                        for (int i = 0; i < dataCount; i++)
+                        {
+                            sortData_textBox->AppendText(System::Convert::ToString(sortData[i]));
+                            if (i != dataCount - 1)
+                                sortData_textBox->AppendText(", ");
+                        }
+                        console->AppendText("Show sorted data.\r\n\r\n");
+                    }
 				}
 				else
 					console->AppendText("[ERROR].\r\nAlgorithm is not checked.\r\n\r\n");
 
 				sortData = nullptr;
 			}
-	};
+};
 }
