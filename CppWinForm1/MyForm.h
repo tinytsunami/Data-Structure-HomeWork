@@ -1,6 +1,10 @@
 #pragma once
-# include <ctime>
+#include <ctime>
+#include <cmath>
+#include <fstream>
 #include "Algorithms.h"
+
+//any is global...(lazy...)
 int upBound, underBound;
 int count;
 int originData[110000];
@@ -8,8 +12,8 @@ int tmpData[110000];
 int *sortData;
 int stepNum = 1;
 int addNum = 0;
-bool showData = true;
-bool checkSorted = false;
+bool showData = false;
+bool checkSorted = true;
 bool drawChart = true;
 
 namespace CppWinForm1 {
@@ -47,94 +51,67 @@ namespace CppWinForm1 {
 			}
 		}
 	private: System::Windows::Forms::Button^  button_sort;
-	protected:
+             System::Windows::Forms::TabControl^  tabControl;
+             System::Windows::Forms::Button^  button_getData;
+             System::Windows::Forms::Label^  label_count;
+             System::Windows::Forms::DataVisualization::Charting::Chart^  chart;
+             System::Windows::Forms::Label^  label2;
+             System::Windows::Forms::Label^  label3;
+             System::Windows::Forms::Label^  label4;
+             System::Windows::Forms::NumericUpDown^  numericUpDown_upBound;
+             System::Windows::Forms::NumericUpDown^  numericUpDown_count;
+             System::Windows::Forms::NumericUpDown^  numericUpDown_underBound;
+             System::Windows::Forms::TabPage^  tabPage1;
+             System::Windows::Forms::Label^  label1;
+             System::Windows::Forms::TextBox^  console;
+             System::Windows::Forms::TabPage^  tabPage_originData;
+             System::Windows::Forms::Label^  label6;
+             System::Windows::Forms::Label^  label5;
+             System::Windows::Forms::TextBox^  sortData_textBox;
+             System::Windows::Forms::TextBox^  originData_textBox;
+             System::Windows::Forms::CheckedListBox^  algorithmBox;
+             System::Windows::Forms::Button^  button1;
+             System::Windows::Forms::Button^  button2;
+             System::Windows::Forms::TabPage^  tabPage2;
+             System::Windows::Forms::Label^  label24;
+             System::Windows::Forms::Label^  label25;
+             System::Windows::Forms::Label^  label22;
+             System::Windows::Forms::Label^  label21;
+             System::Windows::Forms::Label^  label20;
+             System::Windows::Forms::Label^  label19;
+             System::Windows::Forms::Label^  label18;
+             System::Windows::Forms::Label^  label17;
+             System::Windows::Forms::Label^  label16;
+             System::Windows::Forms::Label^  label15;
+             System::Windows::Forms::Label^  label14;
+             System::Windows::Forms::Label^  label13;
+             System::Windows::Forms::Label^  label12;
+             System::Windows::Forms::Label^  label11;
+             System::Windows::Forms::Label^  label10;
+             System::Windows::Forms::Label^  label9;
+             System::Windows::Forms::Label^  label7;
+             System::Windows::Forms::Label^  label8;
+             System::Windows::Forms::LinkLabel^  linkLabel1;
+             System::Windows::Forms::Button^  button3;
+             System::Windows::Forms::Button^  button5;
+             System::Windows::Forms::Button^  button4;
+             System::Windows::Forms::CheckBox^  checkBox1;
+             System::Windows::Forms::CheckBox^  checkSortedBox;
+             System::Windows::Forms::CheckBox^  checkBox3;
+
+             System::Windows::Forms::NumericUpDown^  stepBox;
+             System::Windows::Forms::NumericUpDown^  addBox;
+             System::Windows::Forms::Label^  label26;
+             System::Windows::Forms::Label^  label28;
+    private: System::Windows::Forms::TabPage^  tabPage3;
+    private: System::Windows::Forms::TextBox^  textBox1;
+    private: System::Windows::Forms::NumericUpDown^  searchDataBox;
 
 
-	protected:
-
-	private: System::Windows::Forms::TabControl^  tabControl;
-
-
-	private: System::Windows::Forms::Button^  button_getData;
-	private: System::Windows::Forms::Label^  label_count;
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart;
-
-
-	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Label^  label3;
-	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown_upBound;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown_count;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown_underBound;
-	private: System::Windows::Forms::TabPage^  tabPage1;
-	private: System::Windows::Forms::Label^  label1;
-
-	private: System::Windows::Forms::TextBox^  console;
-	private: System::Windows::Forms::TabPage^  tabPage_originData;
-	private: System::Windows::Forms::Label^  label6;
-	private: System::Windows::Forms::Label^  label5;
-	private: System::Windows::Forms::TextBox^  sortData_textBox;
-
-	private: System::Windows::Forms::TextBox^  originData_textBox;
-
-
-	private: System::Windows::Forms::CheckedListBox^  algorithmBox;
-
-
-	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::TabPage^  tabPage2;
-	private: System::Windows::Forms::Label^  label24;
-	private: System::Windows::Forms::Label^  label25;
-
-	private: System::Windows::Forms::Label^  label22;
-	private: System::Windows::Forms::Label^  label21;
-	private: System::Windows::Forms::Label^  label20;
-	private: System::Windows::Forms::Label^  label19;
-	private: System::Windows::Forms::Label^  label18;
-	private: System::Windows::Forms::Label^  label17;
-	private: System::Windows::Forms::Label^  label16;
-	private: System::Windows::Forms::Label^  label15;
-	private: System::Windows::Forms::Label^  label14;
-	private: System::Windows::Forms::Label^  label13;
-	private: System::Windows::Forms::Label^  label12;
-	private: System::Windows::Forms::Label^  label11;
-	private: System::Windows::Forms::Label^  label10;
-	private: System::Windows::Forms::Label^  label9;
-	private: System::Windows::Forms::Label^  label7;
-	private: System::Windows::Forms::Label^  label8;
-	private: System::Windows::Forms::LinkLabel^  linkLabel1;
-
-
-
-
-	private: System::Windows::Forms::Button^  button3;
-
-	private: System::Windows::Forms::Button^  button5;
-
-
-    private: System::Windows::Forms::Button^  button4;
-
-    private: System::Windows::Forms::CheckBox^  checkBox1;
-
-
-
-    private: System::Windows::Forms::CheckBox^  checkSortedBox;
-
-
-    private: System::Windows::Forms::CheckBox^  checkBox3;
-    private: System::Windows::Forms::Button^  button6;
-    private: System::Windows::Forms::NumericUpDown^  stepBox;
-    private: System::Windows::Forms::NumericUpDown^  addBox;
-
-
-    private: System::Windows::Forms::Label^  label26;
-    private: System::Windows::Forms::Label^  label28;
-
-
-	protected:
-
-	private:
+    private: System::Windows::Forms::Label^  label23;
+    private: System::Windows::Forms::Button^  button7;
+    private: System::Windows::Forms::Button^  button8;
+    private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -154,7 +131,6 @@ namespace CppWinForm1 {
             this->tabControl = (gcnew System::Windows::Forms::TabControl());
             this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
             this->checkBox3 = (gcnew System::Windows::Forms::CheckBox());
-            this->button6 = (gcnew System::Windows::Forms::Button());
             this->button4 = (gcnew System::Windows::Forms::Button());
             this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
             this->checkSortedBox = (gcnew System::Windows::Forms::CheckBox());
@@ -166,6 +142,12 @@ namespace CppWinForm1 {
             this->label5 = (gcnew System::Windows::Forms::Label());
             this->sortData_textBox = (gcnew System::Windows::Forms::TextBox());
             this->originData_textBox = (gcnew System::Windows::Forms::TextBox());
+            this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+            this->button8 = (gcnew System::Windows::Forms::Button());
+            this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+            this->searchDataBox = (gcnew System::Windows::Forms::NumericUpDown());
+            this->label23 = (gcnew System::Windows::Forms::Label());
+            this->button7 = (gcnew System::Windows::Forms::Button());
             this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
             this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
             this->label24 = (gcnew System::Windows::Forms::Label());
@@ -206,6 +188,8 @@ namespace CppWinForm1 {
             this->tabControl->SuspendLayout();
             this->tabPage1->SuspendLayout();
             this->tabPage_originData->SuspendLayout();
+            this->tabPage3->SuspendLayout();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->searchDataBox))->BeginInit();
             this->tabPage2->SuspendLayout();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->stepBox))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->addBox))->BeginInit();
@@ -228,6 +212,7 @@ namespace CppWinForm1 {
             // 
             this->tabControl->Controls->Add(this->tabPage1);
             this->tabControl->Controls->Add(this->tabPage_originData);
+            this->tabControl->Controls->Add(this->tabPage3);
             this->tabControl->Controls->Add(this->tabPage2);
             this->tabControl->Location = System::Drawing::Point(12, 137);
             this->tabControl->Name = L"tabControl";
@@ -238,7 +223,6 @@ namespace CppWinForm1 {
             // tabPage1
             // 
             this->tabPage1->Controls->Add(this->checkBox3);
-            this->tabPage1->Controls->Add(this->button6);
             this->tabPage1->Controls->Add(this->button4);
             this->tabPage1->Controls->Add(this->checkBox1);
             this->tabPage1->Controls->Add(this->checkSortedBox);
@@ -267,19 +251,11 @@ namespace CppWinForm1 {
             this->checkBox3->UseVisualStyleBackColor = true;
             this->checkBox3->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox3_CheckedChanged);
             // 
-            // button6
-            // 
-            this->button6->Location = System::Drawing::Point(93, 212);
-            this->button6->Name = L"button6";
-            this->button6->Size = System::Drawing::Size(86, 23);
-            this->button6->TabIndex = 33;
-            this->button6->Text = L"Save";
-            // 
             // button4
             // 
             this->button4->Location = System::Drawing::Point(6, 212);
             this->button4->Name = L"button4";
-            this->button4->Size = System::Drawing::Size(86, 23);
+            this->button4->Size = System::Drawing::Size(170, 23);
             this->button4->TabIndex = 24;
             this->button4->Text = L"Clear";
             this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
@@ -291,9 +267,9 @@ namespace CppWinForm1 {
             this->checkBox1->CheckState = System::Windows::Forms::CheckState::Checked;
             this->checkBox1->Location = System::Drawing::Point(185, 168);
             this->checkBox1->Name = L"checkBox1";
-            this->checkBox1->Size = System::Drawing::Size(107, 16);
+            this->checkBox1->Size = System::Drawing::Size(177, 16);
             this->checkBox1->TabIndex = 22;
-            this->checkBox1->Text = L"Dont show output";
+            this->checkBox1->Text = L"Dont show output (and generate)";
             this->checkBox1->UseVisualStyleBackColor = true;
             this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
             // 
@@ -304,9 +280,9 @@ namespace CppWinForm1 {
             this->checkSortedBox->CheckState = System::Windows::Forms::CheckState::Checked;
             this->checkSortedBox->Location = System::Drawing::Point(185, 190);
             this->checkSortedBox->Name = L"checkSortedBox";
-            this->checkSortedBox->Size = System::Drawing::Size(87, 16);
+            this->checkSortedBox->Size = System::Drawing::Size(146, 16);
             this->checkSortedBox->TabIndex = 18;
-            this->checkSortedBox->Text = L"Check Sorted";
+            this->checkSortedBox->Text = L"Check Sorted (last of sort)";
             this->checkSortedBox->UseVisualStyleBackColor = true;
             this->checkSortedBox->CheckedChanged += gcnew System::EventHandler(this, &MyForm::ProgressiveCheck_CheckedChanged);
             // 
@@ -329,7 +305,7 @@ namespace CppWinForm1 {
             {
                 L"Bubble sort", L"Selection sort", L"Insertion sort",
                     L"Cocktail sort", L"Bucket sort", L"Counting sort", L"Merge sort", L"Binary search tree", L"Comb sort", L"Radix sort", L"Gnome sort",
-                    L"Odd-even sort", L"Block sort", L"Quick sort", L"Heap sort", L"Stooge sort", L"Bogo sort"
+                    L"Odd-even sort", L"Shell sort", L"Quick sort", L"Heap sort", L"Stooge sort (Inefficient)", L"Bogo sort (Unstable)"
             });
             this->algorithmBox->Location = System::Drawing::Point(182, 27);
             this->algorithmBox->Name = L"algorithmBox";
@@ -399,6 +375,70 @@ namespace CppWinForm1 {
             this->originData_textBox->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
             this->originData_textBox->Size = System::Drawing::Size(172, 203);
             this->originData_textBox->TabIndex = 7;
+            // 
+            // tabPage3
+            // 
+            this->tabPage3->Controls->Add(this->button8);
+            this->tabPage3->Controls->Add(this->textBox1);
+            this->tabPage3->Controls->Add(this->searchDataBox);
+            this->tabPage3->Controls->Add(this->label23);
+            this->tabPage3->Controls->Add(this->button7);
+            this->tabPage3->Location = System::Drawing::Point(4, 22);
+            this->tabPage3->Name = L"tabPage3";
+            this->tabPage3->Padding = System::Windows::Forms::Padding(3);
+            this->tabPage3->Size = System::Drawing::Size(365, 241);
+            this->tabPage3->TabIndex = 4;
+            this->tabPage3->Text = L"Search";
+            this->tabPage3->UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this->button8->Location = System::Drawing::Point(24, 146);
+            this->button8->Name = L"button8";
+            this->button8->Size = System::Drawing::Size(108, 23);
+            this->button8->TabIndex = 35;
+            this->button8->Text = L"Clear";
+            this->button8->UseVisualStyleBackColor = true;
+            this->button8->Click += gcnew System::EventHandler(this, &MyForm::button8_Click);
+            // 
+            // textBox1
+            // 
+            this->textBox1->Location = System::Drawing::Point(161, 23);
+            this->textBox1->Multiline = true;
+            this->textBox1->Name = L"textBox1";
+            this->textBox1->ReadOnly = true;
+            this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+            this->textBox1->Size = System::Drawing::Size(181, 195);
+            this->textBox1->TabIndex = 34;
+            // 
+            // searchDataBox
+            // 
+            this->searchDataBox->Location = System::Drawing::Point(24, 89);
+            this->searchDataBox->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 65536, 0, 0, 0 });
+            this->searchDataBox->Name = L"searchDataBox";
+            this->searchDataBox->Size = System::Drawing::Size(108, 22);
+            this->searchDataBox->TabIndex = 33;
+            // 
+            // label23
+            // 
+            this->label23->AutoSize = true;
+            this->label23->Font = (gcnew System::Drawing::Font(L"·L³n¥¿¶ÂÅé", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                                                               static_cast<System::Byte>(136)));
+            this->label23->Location = System::Drawing::Point(20, 65);
+            this->label23->Name = L"label23";
+            this->label23->Size = System::Drawing::Size(112, 21);
+            this->label23->TabIndex = 1;
+            this->label23->Text = L"Binary search";
+            // 
+            // button7
+            // 
+            this->button7->Location = System::Drawing::Point(24, 117);
+            this->button7->Name = L"button7";
+            this->button7->Size = System::Drawing::Size(108, 23);
+            this->button7->TabIndex = 0;
+            this->button7->Text = L"Search";
+            this->button7->UseVisualStyleBackColor = true;
+            this->button7->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
             // 
             // tabPage2
             // 
@@ -851,6 +891,9 @@ namespace CppWinForm1 {
             this->tabPage1->PerformLayout();
             this->tabPage_originData->ResumeLayout(false);
             this->tabPage_originData->PerformLayout();
+            this->tabPage3->ResumeLayout(false);
+            this->tabPage3->PerformLayout();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->searchDataBox))->EndInit();
             this->tabPage2->ResumeLayout(false);
             this->tabPage2->PerformLayout();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->stepBox))->EndInit();
@@ -1005,26 +1048,29 @@ namespace CppWinForm1 {
 		////////////////////////////////////////////////////////////
 		/* Other Tool											  */
 		////////////////////////////////////////////////////////////
-			//Let up-bound > under-bound (value increase)
+			//let up-bound > under-bound (value increase)
 			System::Void numericUpDown_underBound_ValueChanged(System::Object^  sender, System::EventArgs^  e)
 			{
 				if (numericUpDown_upBound->Value < numericUpDown_underBound->Value)
 					numericUpDown_upBound->Value = System::Convert::ToInt32(numericUpDown_underBound->Value) + 1;
 			}
-			//Let up-bound > under-bound (value reduce)
+			//let up-bound > under-bound (value reduce)
 			System::Void numericUpDown_upBound_ValueChanged(System::Object^  sender, System::EventArgs^  e)
 			{
 				if (numericUpDown_upBound->Value < numericUpDown_underBound->Value)
 					numericUpDown_underBound->Value = System::Convert::ToInt32(numericUpDown_upBound->Value) - 1;
 			}	
-			System::Void linkLabel1_LinkClicked(System::Object^  sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^  e)
+			//my github link
+            System::Void linkLabel1_LinkClicked(System::Object^  sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^  e)
 			{
 				System::Diagnostics::Process::Start("https://github.com/tinytsunami");
 			}
+            //clear console
             System::Void button4_Click(System::Object^  sender, System::EventArgs^  e)
             {
                 console->Clear();
             }
+            //check box control
             System::Void checkBox1_CheckedChanged(System::Object^  sender, System::EventArgs^  e)
             {
                 showData = !checkBox1->Checked;
@@ -1073,6 +1119,7 @@ namespace CppWinForm1 {
                             //draw
                             if (drawChart == true)
                             {
+                                this->chart->Series[name]->BorderWidth = 2;
                                 this->chart->Series[name]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
                                 this->chart->Series[name]->Points->AddXY(dataCount, time + 0.0001f);
                             }
@@ -1083,7 +1130,7 @@ namespace CppWinForm1 {
                 //have any sorted box is checked.
 				if (sortData != nullptr)
 				{
-                    //check
+                    //check every data
                     if (checkSorted == true)
                     {
                         int index;
@@ -1100,7 +1147,7 @@ namespace CppWinForm1 {
                             console->AppendText("Check success.\r\n\r\n");
                         }
                     }
-                    //show
+                    //show the output
                     if (showData == true)
                     {
                         sortData_textBox->Text = "";
@@ -1115,8 +1162,55 @@ namespace CppWinForm1 {
 				}
 				else
 					console->AppendText("[ERROR].\r\nAlgorithm is not checked.\r\n\r\n");
-
-				sortData = nullptr;
 			}
+        ////////////////////////////////////////////////////////////
+        /* Search       										  */
+        ////////////////////////////////////////////////////////////
+        System::Void button7_Click(System::Object^  sender, System::EventArgs^  e)
+        {
+            int searchData = System::Convert::ToInt32(this->searchDataBox->Value);
+            //get all count of data
+            int dataCount = count + addNum * stepNum;
+            if (sortData != nullptr)
+            {
+                this->textBox1->AppendText("Search Start!\r\n(last generate data)\r\n\r\n");
+                this->textBox1->AppendText("All count:" + System::Convert::ToString(dataCount) + "\r\n\r\n");
+                this->textBox1->AppendText("Search data:" + System::Convert::ToString(searchData) + "\r\n\r\n");
+                
+                int max = floor(log(dataCount) / log(2)) + 2;
+                int start, end;
+                start = 0;
+                end = dataCount;
+                int i;
+                for(i = 0; i < max; i++)
+                {
+                    int index = (end - start) / 2 + start;
+                    this->textBox1->AppendText("Find data:" + System::Convert::ToString(sortData[index]));
+                    this->textBox1->AppendText(" (index:" + System::Convert::ToString(index) + ")\r\n\r\n");
+                    if (sortData[index] > searchData)
+                        end = index;
+                    else
+                        start = index;
+                    if (searchData == sortData[index])
+                    {
+                        this->textBox1->AppendText("Found!\r\n");
+                        this->textBox1->AppendText("data:" + System::Convert::ToString(sortData[index]));
+                        this->textBox1->AppendText(" (index:" + System::Convert::ToString(index) + ")\r\n\r\n");
+                        break;
+                    }
+                }
+                if (i == max)
+                {
+                    this->textBox1->AppendText("Cannot found!\r\n");
+                    this->textBox1->AppendText("Data does not exist.\r\n\r\n");
+                }
+            }
+            else
+                this->textBox1->AppendText("Search Failed: Unsorted.\r\n\r\n");
+        }
+        System::Void button8_Click(System::Object^  sender, System::EventArgs^  e)
+        {
+            this->textBox1->Clear();
+        }
 };
 }

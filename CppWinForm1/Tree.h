@@ -1,57 +1,72 @@
 #pragma once
+class Node
+{
+public:
+    Node(int data);
+    int value;
+    Node *left;
+    Node *right;
+};
+
+Node::Node(int data)
+{
+    this->value = data;
+    this->left = nullptr;
+    this->right = nullptr;
+}
 
 class Tree
 {
 public:
-    class Node
-    {
-    public:
-        int value;
-        Node *left;
-        Node *right;
-    };
-    Tree();
-    void push(Node *root, int data);
-    void preOrder();
+    Tree(int* data);
+    void push(int data);
     void inOrder();
-    void postOrder();
-private:
     Node *root;
+private:
+    void push(Node *root, int data);
+    void inOrder(Node *root);
+    int *tmp;
+    int index;
 };
 
-Tree::Tree()
+Tree::Tree(int *data)
 {
-    this->root = new Node;
-    this->root->left = nullptr;
-    this->root->right = nullptr;
+    this->tmp = data;
+    this->root = nullptr;
 }
-
+void Tree::push(int data)
+{
+    this->push(this->root, data);
+}
+void Tree::inOrder()
+{
+    this->index = 0;
+    this->inOrder(this->root);
+}
 void Tree::push(Node *root, int data)
 {
-    if (root->value <= data)
+    if (this->root == nullptr)
+        this->root = new Node(data);
+    else if (root->value > data)
+    {
         if (root->left == nullptr)
-        {
-            root->left = new Node;
-            root->left->value = data;
-            root->left->left = nullptr;
-            root->left->right = nullptr;
-            return;
-        }
+            root->left = new Node(data);
         else
-        {
             this->push(root->left, data);
-        }
+    }
     else
+    {
         if (root->right == nullptr)
-        {
-            root->right = new Node;
-            root->right->value = data;
-            root->right->left = nullptr;
-            root->right->right = nullptr;
-            return;
-        }
+            root->right = new Node(data);
         else
-        {
             this->push(root->right, data);
-        }
+    }
+}
+void Tree::inOrder(Node *root)
+{
+    if (root->left != nullptr)
+        inOrder(root->left);
+    this->tmp[this->index++] = root->value;
+    if (root->right != nullptr)
+        inOrder(root->right);
 }
