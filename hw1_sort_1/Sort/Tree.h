@@ -64,9 +64,12 @@ void Tree::push(Node *root, int data)
 }
 void Tree::inOrder(Node *root)
 {
-    if (root->left != nullptr)
-        inOrder(root->left);
-    this->tmp[this->index++] = root->value;
-    if (root->right != nullptr)
-        inOrder(root->right);
+	if (root != nullptr)
+	{
+		if (root->left != nullptr)
+			inOrder (root->left);
+		this->tmp[this->index++] = root->value;
+		if (root->right != nullptr)
+			inOrder (root->right);
+	}
 }

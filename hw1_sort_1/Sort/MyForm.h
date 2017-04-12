@@ -761,11 +761,11 @@ namespace CppWinForm1
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font (L"Microsoft Sans Serif", 15.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
+			this->label2->Font = (gcnew System::Drawing::Font (L"微軟正黑體", 15.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 															   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(136)));
 			this->label2->Location = System::Drawing::Point (7, 12);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size (473, 25);
+			this->label2->Size = System::Drawing::Size (378, 26);
 			this->label2->TabIndex = 9;
 			this->label2->Text = L" Data Generate                                           ";
 			// 
@@ -886,7 +886,7 @@ namespace CppWinForm1
 			this->MaximumSize = System::Drawing::Size (960, 455);
 			this->MinimumSize = System::Drawing::Size (960, 455);
 			this->Name = L"MyForm";
-			this->Text = L"SORT by YANG-YU";
+			this->Text = L"Sort By Yang-Yu";
 			this->tabControl->ResumeLayout (false);
 			this->tabPage1->ResumeLayout (false);
 			this->tabPage1->PerformLayout ();
