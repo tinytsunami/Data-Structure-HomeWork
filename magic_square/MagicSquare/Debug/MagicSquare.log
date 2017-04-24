@@ -1,0 +1,8 @@
+﻿  MyForm.cpp
+d:\program\data-structure-homework\hw2_magic_square\magicsquare\magicSquare.h(89): warning C4244: '=': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+d:\program\data-structure-homework\hw2_magic_square\magicsquare\magicSquare.h(90): warning C4244: '=': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+d:\program\data-structure-homework\hw2_magic_square\magicsquare\magicSquare.h(91): warning C4244: '=': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+d:\program\data-structure-homework\hw2_magic_square\magicsquare\MyForm.h(466): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  MagicSquare.vcxproj -> D:\Program\Data-Structure-HomeWork\hw2_magic_square\Debug\MagicSquare.exe
+  MagicSquare.vcxproj -> D:\Program\Data-Structure-HomeWork\hw2_magic_square\Debug\MagicSquare.pdb (Full PDB)

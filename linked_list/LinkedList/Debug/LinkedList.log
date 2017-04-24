@@ -1,0 +1,9 @@
+﻿  MyForm.cpp
+d:\program\data-structure-homework\hw5_linked_list\linkedlist\LinkedList.h(174): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1316): note: 請參閱 'itoa' 的宣告
+  d:\program\data-structure-homework\hw5_linked_list\linkedlist\LinkedList.h(168): note: 編譯類別 樣板 成員函式 'std::string SingleLinkList<int>::getString(void)' 時
+  d:\program\data-structure-homework\hw5_linked_list\linkedlist\MyForm.h(465): note: 請參閱所要編譯的函式 樣板 具現化 'std::string SingleLinkList<int>::getString(void)' 之參考
+  d:\program\data-structure-homework\hw5_linked_list\linkedlist\MyForm.h(8): note: 請參閱要編譯的類別 樣板 具現化 'SingleLinkList<int>' 之參考
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  LinkedList.vcxproj -> D:\Program\Data-Structure-HomeWork\hw5_linked_list\Debug\LinkedList.exe
+  LinkedList.vcxproj -> D:\Program\Data-Structure-HomeWork\hw5_linked_list\Debug\LinkedList.pdb (Full PDB)

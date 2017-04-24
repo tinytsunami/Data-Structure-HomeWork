@@ -1,0 +1,20 @@
+﻿已經開始建置於 2016/10/22 下午 10:06:44。
+     1>節點 2 (Build 目標) 上的專案 "C:\Users\Tinytsunami\Downloads\Data-Structure-HomeWork-master\MagicSquare\MagicSquare\MagicSquare.vcxproj"。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.dll" /errorReport:prompt /clr:nostdlib MyForm.cpp
+         MyForm.cpp
+     1>c:\users\tinytsunami\downloads\data-structure-homework-master\magicsquare\magicsquare\magicSquare.h(89): warning C4244: '=': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+     1>c:\users\tinytsunami\downloads\data-structure-homework-master\magicsquare\magicsquare\magicSquare.h(90): warning C4244: '=': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+     1>c:\users\tinytsunami\downloads\data-structure-homework-master\magicsquare\magicsquare\magicSquare.h(91): warning C4244: '=': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+     1>c:\users\tinytsunami\downloads\data-structure-homework-master\magicsquare\magicsquare\MyForm.h(451): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /clr /nologo /W3 /WX- /Od /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fp"x64\Debug\MagicSquare.pch" /Fa"x64\Debug\\" /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /errorReport:prompt "C:\Users\Tinytsunami\AppData\Local\Temp\.NETFramework,Version=v4.5.2.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tinytsunami\Downloads\Data-Structure-HomeWork-master\MagicSquare\x64\Debug\MagicSquare.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:x64\Debug\MagicSquare.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Tinytsunami\Downloads\Data-Structure-HomeWork-master\MagicSquare\x64\Debug\MagicSquare.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X64 x64\Debug\MyForm.obj
+         "x64\Debug\.NETFramework,Version=v4.5.2.AssemblyAttributes.obj"
+     1>LINK : fatal error LNK1561: 必須定義進入點
+     1>專案 "C:\Users\Tinytsunami\Downloads\Data-Structure-HomeWork-master\MagicSquare\MagicSquare\MagicSquare.vcxproj" (Build 目標) 建置完成 -- 失敗。
+
+建置失敗。
+
+經過時間 00:00:16.28
