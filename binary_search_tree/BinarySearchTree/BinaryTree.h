@@ -287,7 +287,64 @@ void BinaryTree<T>::insert (T data)
 template <typename T>
 void BinaryTree<T>::remove (T data)
 {
-	//...¥¼¹ê§@...//
+	BinaryTreeNode<T> *parent = NULL;
+	BinaryTreeNode<T> *target = this->root;
+	while (target != NULL && target->data != data)
+	{
+		parent = target;
+		if (data < target->data)
+			target = target->left;
+		else
+			target = target->right;
+	}
+	if (target != NULL)
+	{
+		if (target->left == NULL || target->right == NULL)
+		{
+			BinaryTreeNode<T>* child = target->left == NULL ? target->right : target->left;
+			if (child == NULL)
+			{
+				if(parent == NULL)
+					this->root = NULL;
+				else if (data < parent->data)
+					parent->left = NULL; 
+				else if (data > parent->data)
+					parent->right = NULL;
+				delete target;
+			}
+			else
+			{
+				*target = *child;
+				delete child;
+			}
+		}
+		else
+		{
+			BinaryTreeNode<T> *inherit_parent = NULL;
+			BinaryTreeNode<T> *inherit = target->left;
+			while (inherit->right != NULL)
+			{
+				inherit_parent = inherit;
+				inherit = inherit->right;
+			}
+			target->data = inherit->data;
+			if (inherit->data < inherit_parent->data)
+				inherit_parent->left = NULL;
+			else
+				inherit_parent->right = NULL;
+			if (inherit->left == NULL || inherit->right == NULL)
+			{
+				BinaryTreeNode<T>* child = inherit->left == NULL ? inherit->right : inherit->left;
+				if (child == NULL)
+					delete inherit;
+				else
+				{
+					*inherit = *child;
+					delete child;
+				}
+			}
+		}
+	}
 }
 
 //===============================================
@@ -306,8 +363,11 @@ void BinaryTree<T>::preorder (void (*callback)(BinaryTreeNode<T> *node))
 			stack.push (now);
 			now = now->left;
 		}
-		now = stack.pop ();
-		now = now->right;
+		if (!stack.empty ())
+		{
+			now = stack.pop ();
+			now = now->right;
+		}
 	} while (!stack.empty () || now != NULL);
 }
 
@@ -326,9 +386,12 @@ void BinaryTree<T>::inorder (void (*callback)(BinaryTreeNode<T> *node))
 			stack.push (now);
 			now = now->left;
 		}
-		now = stack.pop ();
-		callback (now);
-		now = now->right;
+		if (!stack.empty ())
+		{
+			now = stack.pop ();
+			callback (now);
+			now = now->right;
+		}
 	} while (!stack.empty () || now != NULL);
 }
 
@@ -349,8 +412,11 @@ void BinaryTree<T>::postorder (void (*callback)(BinaryTreeNode<T> *node))
 			stack.push (now);
 			now = now->right;
 		}
-		now = stack.pop ();
-		now = now->left;
+		if (!stack.empty ())
+		{
+			now = stack.pop ();
+			now = now->left;
+		}
 	} while (!stack.empty () || now != NULL);
 	// reverse
 	stack.clear ();

@@ -1,6 +1,5 @@
 ﻿  MyForm.cpp
-d:\program\data-structure-homework\hw6.7_binary_search_tree\binarysearchtree\MyForm.h(256): warning C4018: '<': signed/unsigned 不相符
-d:\program\data-structure-homework\hw6.7_binary_search_tree\binarysearchtree\queue.h(55): warning C4715: 'Queue<BinaryTreeNode<int> *>::pop': 不是所有控制路徑都傳回值
-  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
-  BinarySearchTree.vcxproj -> D:\Program\Data-Structure-HomeWork\hw6.7_binary_search_tree\Debug\BinarySearchTree.exe
-  BinarySearchTree.vcxproj -> D:\Program\Data-Structure-HomeWork\hw6.7_binary_search_tree\Debug\BinarySearchTree.pdb (Full PDB)
+d:\program\data-structure-homework\binary_search_tree\binarysearchtree\MyForm.h(256): warning C4018: '<': signed/unsigned 不相符
+d:\program\data-structure-homework\binary_search_tree\binarysearchtree\queue.h(55): warning C4715: 'Queue<BinaryTreeNode<int> *>::pop': 不是所有控制路徑都傳回值
+  BinarySearchTree.vcxproj -> D:\Program\Data-Structure-HomeWork\binary_search_tree\Debug\BinarySearchTree.exe
+  BinarySearchTree.vcxproj -> D:\Program\Data-Structure-HomeWork\binary_search_tree\Debug\BinarySearchTree.pdb (Full PDB)
