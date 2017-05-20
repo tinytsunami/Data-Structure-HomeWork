@@ -70,7 +70,7 @@
       <td>spanning_tree</td>
       <td>最小生成樹</td>
       <td>2017/05/20</td>
-      <td>包含：<br/>1. Krukal's Algorithm(STL Sort)<br/>2. Krukal's Algorithm(Quick Sort)<br/>3. Krukal's Algorithm(Bubble Sort)<br/>4. Krukal's Algorithm(Linear Search)<br/>5. Krukal's Algorithm(Heap)<br/>6. Prim's Algorithm<br/>※含一個 PDF 分析圖表。</td>
+      <td>包含：<br/>1. Krukal's Algorithm(STL Sort)<br/>2. Krukal's Algorithm(Quick Sort)<br/>3. Krukal's Algorithm(Bubble Sort)<br/>4. Krukal's Algorithm(Linear Search)<br/>5. Krukal's Algorithm(Heap)<br/>6. Prim's Algorithm<br/><br/>※含一個 PDF 分析圖表。</td>
     </tr>
   </table>
 </p>
