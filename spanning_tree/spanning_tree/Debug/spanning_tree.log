@@ -1,4 +1,4 @@
 ﻿  MyForm.cpp
-d:\program\data-structure-homework\spanning_tree\spanning_tree\myform.h(1090): warning C4700: 使用了未初始化的區域變數 't1'
+d:\program\data-structure-homework\spanning_tree\spanning_tree\myform.h(1092): warning C4700: 使用了未初始化的區域變數 't1'
   spanning_tree.vcxproj -> D:\Program\Data-Structure-HomeWork\spanning_tree\Debug\spanning_tree.exe
   spanning_tree.vcxproj -> D:\Program\Data-Structure-HomeWork\spanning_tree\Debug\spanning_tree.pdb (Full PDB)

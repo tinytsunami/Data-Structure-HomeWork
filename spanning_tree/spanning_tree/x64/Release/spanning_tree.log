@@ -1,0 +1,4 @@
+﻿  MyForm.cpp
+d:\program\data-structure-homework\spanning_tree\spanning_tree\myform.h(1092): warning C4700: 使用了未初始化的區域變數 't1'
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+LINK : fatal error LNK1561: 必須定義進入點

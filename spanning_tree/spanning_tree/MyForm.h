@@ -681,6 +681,8 @@ namespace spanning_tree {
 						int w = edge[ans[i]][2];
 						textBox1->AppendText ("(" + a + "," + b + ") = " + w + "\r\n");
 					}
+					for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
+					textBox1->AppendText ("總權重：" + allWeight + "\r\n");
 				}
 				else
 					textBox1->AppendText ("本圖無解\r\n");
@@ -688,9 +690,7 @@ namespace spanning_tree {
 			t3 = (float)(clock () - ct1) / CLK_TCK;
 			textBox1->AppendText ("STL排序邊，耗時：" + t1 + "秒\r\n");
 			textBox1->AppendText ("避免環生成，耗時：" + t2 + "秒\r\n");
-			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n");
-			for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
-			textBox1->AppendText ("總權重：" + allWeight + "\r\n\r\n");
+			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n\r\n");
 			// Clear varible
 			delete[] set;
 			delete[] ans;
@@ -757,6 +757,8 @@ namespace spanning_tree {
 						int w = edge[ans[i]][2];
 						textBox1->AppendText ("(" + a + "," + b + ") = " + w + "\r\n");
 					}
+					for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
+					textBox1->AppendText ("總權重：" + allWeight + "\r\n");
 				}
 				else
 					textBox1->AppendText ("本圖無解\r\n");
@@ -764,9 +766,7 @@ namespace spanning_tree {
 			t3 = (float)(clock () - ct1) / CLK_TCK;
 			textBox1->AppendText ("快速排序邊，耗時：" + t1 + "秒\r\n");
 			textBox1->AppendText ("避免環生成，耗時：" + t2 + "秒\r\n");
-			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n");
-			for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
-			textBox1->AppendText ("總權重：" + allWeight + "\r\n\r\n");
+			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n\r\n");
 			// Clear varible
 			delete[] set;
 			delete[] ans;
@@ -836,6 +836,8 @@ namespace spanning_tree {
 						int w = edge[ans[i]][2];
 						textBox1->AppendText ("(" + a + "," + b + ") = " + w + "\r\n");
 					}
+					for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
+					textBox1->AppendText ("總權重：" + allWeight + "\r\n");
 				}
 				else
 					textBox1->AppendText ("本圖無解\r\n");
@@ -843,9 +845,7 @@ namespace spanning_tree {
 			t3 = (float)(clock () - ct1) / CLK_TCK;
 			textBox1->AppendText ("氣泡排序邊，耗時：" + t1 + "秒\r\n");
 			textBox1->AppendText ("避免環生成，耗時：" + t2 + "秒\r\n");
-			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n");
-			for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
-			textBox1->AppendText ("總權重：" + allWeight + "\r\n\r\n");
+			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n\r\n");
 			// Clear varible
 			delete[] set;
 			delete[] ans;
@@ -922,6 +922,8 @@ namespace spanning_tree {
 						int w = edge[ans[i]][2];
 						textBox1->AppendText ("(" + a + "," + b + ") = " + w + "\r\n");
 					}
+					for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
+					textBox1->AppendText ("總權重：" + allWeight + "\r\n");
 				}
 				else
 					textBox1->AppendText ("本圖無解\r\n");
@@ -929,9 +931,7 @@ namespace spanning_tree {
 			t3 = (float)(clock () - ct1) / CLK_TCK;
 			textBox1->AppendText ("尋找最小邊，耗時：" + t1 + "秒\r\n");
 			textBox1->AppendText ("避免環生成，耗時：" + t2 + "秒\r\n");
-			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n");
-			for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
-			textBox1->AppendText ("總權重：" + allWeight + "\r\n\r\n");
+			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n\r\n");
 			// Clear varible
 			delete[] set;
 			delete[] ans;
@@ -1021,6 +1021,8 @@ namespace spanning_tree {
 						int w = edge[ans[i]][2];
 						textBox1->AppendText ("(" + a + "," + b + ") = " + w + "\r\n");
 					}
+					for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
+					textBox1->AppendText ("總權重：" + allWeight + "\r\n");
 				}
 				else
 					textBox1->AppendText ("本圖無解\r\n");
@@ -1028,9 +1030,7 @@ namespace spanning_tree {
 			t3 = (float)(clock () - ct1) / CLK_TCK;
 			textBox1->AppendText ("創建堆積，耗時：" + t1 + "秒\r\n");
 			textBox1->AppendText ("避免環生成，耗時：" + t2 + "秒\r\n");
-			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n");
-			for (i = 0; i < countAns; i++) allWeight += edge[ans[i]][2];
-			textBox1->AppendText ("總權重：" + allWeight + "\r\n\r\n");
+			textBox1->AppendText ("操作完成，總耗時：" + t3 + "秒\r\n\r\n");
 			// Clear varible
 			delete[] set;
 			delete[] ans;
@@ -1083,6 +1083,8 @@ namespace spanning_tree {
 						q = i;
 						min = ans[i][1];
 					}
+				if (min == infinity)
+					break;
 				ans[q][1] = (-1);
 				p = q;
 				countAns++;
@@ -1101,13 +1103,14 @@ namespace spanning_tree {
 						int w = graphic[a][b];
 						textBox1->AppendText ("(" + a + "," + b + ") = " + w + "\r\n");
 					}
+					for (i = 1; i < countV; i++) allWeight += graphic[i][ans[i][0]];
+					textBox1->AppendText ("總權重：" + allWeight + "\r\n");
 				}
 				else
 					textBox1->AppendText ("本圖無解\r\n");
 			}
-			textBox1->AppendText ("操作完成，總耗時：" + t1 + "秒\r\n");
-			for (i = 1; i < countV; i++) allWeight += graphic[i][ans[i][0]];
-			textBox1->AppendText ("總權重：" + allWeight + "\r\n\r\n");
+			t1 = (float)(clock () - ct1) / CLK_TCK;
+			textBox1->AppendText ("操作完成，總耗時：" + t1 + "秒\r\n\r\n");
 			// Clear varible
 			for (i = 0; i < countV; i++)
 				delete[] ans[i];
@@ -1154,7 +1157,7 @@ namespace spanning_tree {
 		krukalSTLSort ();
 		krukalLinear ();
 		krukalNLogNSort ();
-		//krukalNNSort ();
+		krukalNNSort ();
 	}
 };
 }
