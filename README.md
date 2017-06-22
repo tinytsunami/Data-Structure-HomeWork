@@ -83,7 +83,7 @@
       <td>105下學期作業6</td>
       <td>sort2</td>
       <td>其他排序</td>
-      <td>2016/09/30</td>
+      <td>2017/06/22</td>
       <td>包含：<br/>Bubble sort（氣泡排序）<br/>Selection sort（選擇排序）<br/>Insertion sort（插入排序）<br/>Merge sort（合併排序）<br/>Radix sort（基數排序）<br/>Quick sort（快速排序）<br/>Heap sort（堆積排序）<br/><br/>※這個是sort的部分重製版。<br/>※其中Merge, Quick sort包含遞迴、與非遞迴版本。<br/>※Heap sort建立堆積採Restore方法<br/>※修改Radix sort的空間配置方法</td>
     </tr>
   </table>
