@@ -72,5 +72,12 @@
       <td>2017/05/20</td>
       <td>包含：<br/>1. Krukal's Algorithm(STL Sort)<br/>2. Krukal's Algorithm(Quick Sort)<br/>3. Krukal's Algorithm(Bubble Sort)<br/>4. Krukal's Algorithm(Linear Search)<br/>5. Krukal's Algorithm(Heap)<br/>6. Prim's Algorithm<br/><br/>※含一個 PDF 分析圖表。</td>
     </tr>
+    <tr>
+      <td>105下學期作業5</td>
+      <td>shortest_paths</td>
+      <td>最短路徑、遞移封閉</td>
+      <td>2017/06/03</td>
+      <td>※除了最小權重外，也包含路徑紀錄。</td>
+    </tr>
   </table>
 </p>
