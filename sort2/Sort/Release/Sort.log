@@ -1,0 +1,6 @@
+﻿  MyForm.cpp
+d:\program\data-structure-homework\sort2\sort\radix_sort.h(9): warning C4244: 'return': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+d:\program\data-structure-homework\sort2\sort\radix_sort.h(19): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+d:\program\data-structure-homework\sort2\sort\MyForm.h(1181): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+  Sort.vcxproj -> D:\Program\Data-Structure-HomeWork\sort2\Release\Sort.exe
+  Sort.vcxproj -> D:\Program\Data-Structure-HomeWork\sort2\Release\Sort.pdb (Full PDB)
