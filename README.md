@@ -7,7 +7,6 @@
 * [執行](#執行)
 
 ## 內容
-<p>
   <table>
     <tr>
       <th>作業分類</th>
@@ -94,7 +93,6 @@
       <td>包含：<br/>Bubble sort（氣泡排序）<br/>Selection sort（選擇排序）<br/>Insertion sort（插入排序）<br/>Merge sort（合併排序）<br/>Radix sort（基數排序）<br/>Quick sort（快速排序）<br/>Heap sort（堆積排序）<br/><br/>※這個是sort的部分重製版。<br/>※其中Merge, Quick sort包含遞迴、與非遞迴版本。<br/>※Heap sort建立堆積採Restore方法<br/>※修改Radix sort的空間配置方法</td>
     </tr>
   </table>
-</p>
 
 ## 使用
 本專案使用 Visual Studio 2015 撰寫。開啟時請注意版本。
