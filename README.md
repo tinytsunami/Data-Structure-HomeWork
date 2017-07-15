@@ -1,5 +1,12 @@
-<h1>Data Structure and Algorithm Homework</h1>
-<h3>資料結構與演算法課程作業</h3>
+# Data Structure and Algorithm Homework
+資料結構與演算法課程作業
+
+## 目錄
+* [內容](#內容)
+* [使用](#使用)
+* [執行](#執行)
+
+## 內容
 <p>
   <table>
     <tr>
@@ -88,3 +95,11 @@
     </tr>
   </table>
 </p>
+
+## 使用
+本專案使用 Visual Studio 2015 撰寫。開啟時請注意版本。
+
+另外使用了 C++ Form 的內容。需確認是否安裝正確。
+
+## 執行
+每個專案底下的 Release/ 目錄包含了 .exe 的獨立執行檔案。
